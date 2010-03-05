@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+	xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="bugdemo.browserpage">
+
+	<browser:page
+        for="Products.ATContentTypes.interfaces.folder.IATFolder"
+        name="testview_1"
+		class=".browserpageview.TestView1"
+        permission="zope2.View"
+		template="folder_summary_view.pt"
+	/>
+	<browser:page
+        for="Products.ATContentTypes.interfaces.folder.IATFolder"
+        name="testview_2"
+		class=".browserpageview.TestView2"
+        permission="zope2.View"
+		template="folder_summary_view.pt"
+	/>
+
+	<genericsetup:registerProfile
+        name="default"
+        title="bugdemo.browserpage: default"
+        directory="profiles/default"
+        description="initialization steps for bugdemo.browserpage"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+</configure>
