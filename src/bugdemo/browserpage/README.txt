@@ -4,12 +4,13 @@ BUGDEMO BROWSERPAGE
 Start this test like so:
 ./bin/test -s bugdemo.browserpage -t README.txt
 
-After this package was installed in plone, 2 different browser:page views are
-registered for a folder (configure.zcml and profiles/default/types/types.xml).
+After installation of this package in plone, two different browser:page views
+are registered for IATFolder (see configure.zcml and
+profiles/default/types/types.xml).
 There exists one class for each registered view with an init method which prints
 the name of the view to stdout (browserpageview.py).
 
-When a folder is created, every init-method of both view-classes are called -
+When a folder is created, the init-method of both view-classes are called -
 even though the folder's default_view wasn't set to one of those views:
     >>> self.folder.invokeFactory('Folder', 'testfolder', title='testfolder')
     testview_1
@@ -37,7 +38,7 @@ But now let's login:
     >>> browser.getControl(name='submit').click()
 
 After opening the folder again, the folder's defaultview is called five times
-and the other view we registered is called three times (that's not ok i suppose)
+and the other view is called three times (that's not ok i suppose)
     >>> browser.open(folder_url + '/testfolder')
     testview_1
     testview_1
